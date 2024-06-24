@@ -1,0 +1,31 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::table('notes', function(Blueprint $table) {
+            //con esta creamos un nuevo campo en la tabla notes
+            $table->string('author', 255);
+            //con esta le pasamos un array con las columnas que quiero tirar
+            $table->dropColumn(['deadline']);
+        }); 
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        //ahora en el down ya no vamos a tirar la tabla si no las hacciones que vamos a ejecutar
+        //seria la funcion Schema::dropColumn('author)
+        Schema::dropColumn(['author']);
+    }
+}; 

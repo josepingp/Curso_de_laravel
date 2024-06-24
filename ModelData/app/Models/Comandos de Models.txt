@@ -1,0 +1,2 @@
+Para crear un modelo en laravel se utiliza como convencion el sistema de screamingcamelcase
+el comando seria {php artisan make:model NombreDelModelo}

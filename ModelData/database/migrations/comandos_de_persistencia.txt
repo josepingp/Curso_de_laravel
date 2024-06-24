@@ -1,0 +1,24 @@
+ php artisan migrate -> migra las tablas creadas en migrations
+
+php artisan make:migration create_notes_table 
+make:migration -> crear migracion
+create_notes_table -> le indicamos que queremnos crear la tabla notas
+
+Si se te ha olvidado algo en la tabla de datos no es recomendado borrarla desde
+el administrador y volver a migrar esto es una mala práctica en laravel, nos va a ensuciar
+muchísimo el desarrollo.
+
+Tenemos dos alternativas para solucionar este problema.
+
+La primera es hacer un rollbacking que es tirar hacia atras un lote de migraciones
+en la tabla migrations tenemos los lotes de migrations que hemos ejecutado
+con el comando {php artisan migrate:rollback} tira hacia atras la ultima migracion que hicimos
+y despues puedes añadir los datos o campos que se te hayan olvidado.
+con {php artisan migrate:reset} tiramos hacia atras todas las migraciones que emos echo
+con {php artisan migrate:rollback --batch=y el numero del lote} y podemos tirar hacia atras una migracion en especifico
+con {php artisan migrate:refresh}tira hacia atras todas las migraciones y las vuelve a efectuar
+
+La segunda se usa en los casos en los que no nos interese hacer un rollback por que  tengan relaciones o claves foraneas,
+se trata de crear un archivo que que en ved de crear una tabla lo que haga es modificarla
+con {php artisan make:migration update_nombredelatabla_table}
+
